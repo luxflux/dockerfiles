@@ -1,0 +1,9 @@
+{{ range split .Env.LOCAL_ZONE "," }}
+{{ with $strings := split . ":" }}
+{{ with $name := index $strings 0 }}
+{{ with $ip := index $strings 1 }}
+local-data: "{{ $name }}. IN A {{ $ip }}"
+{{ end }}
+{{ end }}
+{{ end }}
+{{ end }}
